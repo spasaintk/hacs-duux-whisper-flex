@@ -93,7 +93,7 @@ export class DuuxWhisperFlexCard extends LitElement {
           <span>Fan ${fanEntity.state === "on" ? "On" : "Off"}</span>
         </div>
         <div class="row">
-          <span>Horizontal Oscillation:</span>
+          <span>Swing:</span>
           ${swingOptions.map(
             (opt) => html`
               <button
@@ -106,7 +106,7 @@ export class DuuxWhisperFlexCard extends LitElement {
           )}
         </div>
         <div class="row">
-          <span>Vertical Oscillation:</span>
+          <span>Tilt:</span>
           ${tiltOptions.map(
             (opt) => html`
               <button
