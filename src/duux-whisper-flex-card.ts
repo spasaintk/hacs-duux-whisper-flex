@@ -57,6 +57,7 @@ export class DuuxWhisperFlexCard extends LitElement {
     .speed-row {
       flex-direction: column;
       align-items: stretch;
+      gap: 4px;
     }
     .speed-control {
       display: flex;
@@ -148,7 +149,7 @@ export class DuuxWhisperFlexCard extends LitElement {
           )}
         </div>
         <div class="row speed-row">
-          <span class="speed-label label">Speed</span>
+          <span class="speed-label label">Fan speed</span>
           <div class="speed-control">
             <input
               type="range"
