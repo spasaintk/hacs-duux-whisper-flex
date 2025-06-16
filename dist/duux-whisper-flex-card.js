@@ -51,15 +51,15 @@ let DuuxWhisperFlexCard = class DuuxWhisperFlexCard extends LitElement {
         ];
         return html `
       <ha-card header="Duux Whisper Flex">
-        <div class="row">
+        <div class="row fan-row">
+          <ha-icon icon="mdi:fan"></ha-icon>
           <ha-switch
             .checked=${fanEntity.state === "on"}
             @change=${(e) => this._toggleFan(e)}
           ></ha-switch>
-          <span>Fan ${fanEntity.state === "on" ? "On" : "Off"}</span>
         </div>
-        <div class="row">
-          <span>Swing:</span>
+        <div class="row option-row">
+          <span class="label">Swing</span>
           ${swingOptions.map((opt) => html `
               <button
                 class="button ${swing === opt.value ? 'active' : ''}"
@@ -69,8 +69,8 @@ let DuuxWhisperFlexCard = class DuuxWhisperFlexCard extends LitElement {
               </button>
             `)}
         </div>
-        <div class="row">
-          <span>Tilt:</span>
+        <div class="row option-row">
+          <span class="label">Tilt</span>
           ${tiltOptions.map((opt) => html `
               <button
                 class="button ${tilt === opt.value ? 'active' : ''}"
@@ -80,18 +80,20 @@ let DuuxWhisperFlexCard = class DuuxWhisperFlexCard extends LitElement {
               </button>
             `)}
         </div>
-        <div class="row">
-          <span>Speed:</span>
-          <input
-            type="range"
-            class="slider"
-            min="1"
-            max="30"
-            .value=${speed}
-            @input=${(e) => this._updateSpeed(e.target.value)}
-            @change=${(e) => this._setSpeed(e.target.value)}
-          />
-          <span>${speed}</span>
+        <div class="row speed-row">
+          <span class="speed-label label">Speed</span>
+          <div class="speed-control">
+            <input
+              type="range"
+              class="slider"
+              min="1"
+              max="30"
+              .value=${speed}
+              @input=${(e) => this._updateSpeed(e.target.value)}
+              @change=${(e) => this._setSpeed(e.target.value)}
+            />
+            <span class="speed-value">${speed}</span>
+          </div>
         </div>
       </ha-card>
     `;
@@ -157,7 +159,20 @@ DuuxWhisperFlexCard.styles = css `
     .row {
       display: flex;
       align-items: center;
-      margin-bottom: 8px;
+      padding: 8px 16px;
+      margin: 0;
+    }
+    .row + .row {
+      margin-top: 4px;
+    }
+    .label {
+      flex: 0 0 72px;
+    }
+    ha-icon {
+      margin-right: 16px;
+    }
+    .fan-row ha-switch {
+      margin-left: auto;
     }
     .button {
       padding: 6px 12px;
@@ -170,6 +185,22 @@ DuuxWhisperFlexCard.styles = css `
     }
     .slider {
       width: 100%;
+    }
+    .speed-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .speed-control {
+      display: flex;
+      align-items: center;
+    }
+    .speed-control .slider {
+      flex: 1;
+      margin-right: 16px;
+    }
+    .speed-value {
+      width: 32px;
+      text-align: right;
     }
   `;
 __decorate([
