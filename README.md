@@ -9,8 +9,8 @@ This repository contains custom Lovelace card for Home Assistant.
 ## Installation
 
 1. Add this repository as a [custom repository]([https://hacs.xyz/docs/setup/download](https://www.hacs.xyz/docs/faq/custom_repositories/)) in HACS.
-2. Install the desired cards from the "Frontend" section (this may be labeled "Lovelace" in some HACS versions).
-3. The card file is placed under `config/www/community/hacs/` when installed.  Add it as a resource in Home Assistant **as a JavaScript module**:
+2. Install the desired cards on your dashboard.
+3. The card file is placed under `config/www/community/hacs/` when installed.  Add it as a resource in Home Assistant **as a JavaScript module** (generally this is done automatically):
    ```
    /hacsfiles/hacs/duux-whisper-flex-card.js
    ```
@@ -19,7 +19,7 @@ This repository contains custom Lovelace card for Home Assistant.
    ```yaml
    type: custom:duux-whisper-flex-card
    entity: fan.duux_whisper_flex_ultimate
-   command_topic: sensor/b4:8a:0a:29:54:a8/command
+   command_topic: sensor/[YOUR FAN MAC ADDRESS]/command
    ```
 
 ## Home Assistant MQTT Configuration
