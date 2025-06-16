@@ -1,0 +1,13 @@
+{
+  "name": "hacs",
+  "version": "1.0.0",
+  "description": "Home Assistant HACS",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
