@@ -22,11 +22,11 @@ This repository contains custom Lovelace card for Home Assistant.
    command_topic: sensor/[YOUR FAN MAC ADDRESS]/command
    ```
 
-## Home Assistant MQTT Configuration
+## MQTTS Configuration
 
-In order to control the fan via Home Assistant you must run a local MQTTS
+In order to control the fan via Home Assistant you must run a MQTTS
 broker on port `443` with a self-signed certificate for the domain
-`collector3.cloudgarden.nl`.
+`collector3.cloudgarden.nl`. This broker needs to be connected to Home Assistant.
 
 You will need a local DNS infrastructure (for example a Pi-hole) and your DHCP
 server should hand out this DNS address.  Add a record for
