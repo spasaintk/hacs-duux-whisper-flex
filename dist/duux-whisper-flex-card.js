@@ -189,7 +189,10 @@ DuuxWhisperFlexCard.styles = css `
     .speed-row {
       flex-direction: column;
       align-items: stretch;
-      gap: 4px;
+    }
+    .speed-row .label {
+      flex: none;
+      margin-bottom: 4px;
     }
     .speed-control {
       display: flex;
