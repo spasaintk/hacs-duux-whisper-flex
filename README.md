@@ -20,6 +20,9 @@ This repository contains custom Lovelace card for Home Assistant.
    type: custom:duux-whisper-flex-card
    entity: fan.duux_whisper_flex_ultimate
    command_topic: sensor/[YOUR FAN MAC ADDRESS]/command
+   speed_sensor: sensor.duux_whisper_flex_speed
+   swing_sensor: sensor.duux_whisper_flex_swing
+   tilt_sensor: sensor.duux_whisper_flex_tilt
    ```
 
 ## MQTTS Configuration
@@ -76,4 +79,7 @@ cards:
   - type: custom:duux-whisper-flex-card
     entity: fan.duux_whisper_flex_ultimate
     command_topic: sensor/[YOUR FAN MAC ADDRESS]/command
+    speed_sensor: sensor.duux_whisper_flex_speed
+    swing_sensor: sensor.duux_whisper_flex_swing
+    tilt_sensor: sensor.duux_whisper_flex_tilt
 ```
