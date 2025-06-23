@@ -11,6 +11,10 @@ interface HomeAssistant {
 interface LovelaceCardConfig { [key: string]: any; }
 interface DuuxWhisperFlexCardConfig extends LovelaceCardConfig {
   command_topic?: string;
+  entity?: string;
+  speed_sensor?: string;
+  swing_sensor?: string;
+  tilt_sensor?: string;
 }
 
 @customElement("duux-whisper-flex-card")
@@ -79,11 +83,16 @@ export class DuuxWhisperFlexCard extends LitElement {
   render() {
     if (!this._config || !this.hass) return html``;
 
-    const fanEntity = this.hass.states["fan.duux_whisper_flex_ultimate"];
+    const fanId = this._config.entity || "fan.duux_whisper_flex_ultimate";
+    const speedId = this._config.speed_sensor || "sensor.duux_whisper_flex_speed";
+    const swingId = this._config.swing_sensor || "sensor.duux_whisper_flex_swing";
+    const tiltId = this._config.tilt_sensor || "sensor.duux_whisper_flex_tilt";
 
-    const speedSensor = this.hass.states["sensor.duux_whisper_flex_speed"];
-    const swingSensor = this.hass.states["sensor.duux_whisper_flex_swing"];
-    const tiltSensor = this.hass.states["sensor.duux_whisper_flex_tilt"];
+    const fanEntity = this.hass.states[fanId];
+
+    const speedSensor = this.hass.states[speedId];
+    const swingSensor = this.hass.states[swingId];
+    const tiltSensor = this.hass.states[tiltId];
 
     const swing = Number(swingSensor?.state ?? 0);
     const tilt = Number(tiltSensor?.state ?? 0);
@@ -172,8 +181,9 @@ export class DuuxWhisperFlexCard extends LitElement {
 
   private _toggleFan(e: Event) {
     const turnOn = (e.target as HTMLInputElement).checked;
+    const fanId = this._config?.entity || "fan.duux_whisper_flex_ultimate";
     this.hass.callService("fan", turnOn ? "turn_on" : "turn_off", {
-      entity_id: "fan.duux_whisper_flex_ultimate",
+      entity_id: fanId,
     });
   }
 
